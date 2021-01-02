@@ -3,8 +3,8 @@
 class bank
   {
   protected:
-  int amount,num,depo;
-  char c[100];
+  int amount,num,depo,with;
+  char name[100];
   public:
   bank()
   {}
@@ -13,19 +13,17 @@ class bank
   cout<<"enter account number";
   cin>>num;
   cout<<"enter name of account holder ";
-  cin>>c;
+  cin>>name;
   cout<<"enter amount in account";
   cin>>amount;
   }
-  void deposite()
+  void deposite(depo)
   {
-  cout<<"enter amount to deposite";
-  cin>>depo;
   amount=amount+depo;
   }
   void display()
   {
-  cout<<"name:"<<c<<"\namount:"<<amount;
+  cout<<"name:"<<name<<"\namount:"<<amount;
   }
   virtual void process()=0;
   };
@@ -35,10 +33,8 @@ int with,depo,d;
 public:
 saving()
 {}
-void process()
+void process(int with)
 {
-cout<<"enter amount to withdraw";
-cin>>with;
 d=amount-with;
 if(d<500)
 cout<<"you cannot wihdraw";
@@ -52,12 +48,10 @@ int depo,with,e,f;
 public:
 current()
 {}
-void process()
+void process(int with)
 {
 cout<<"enter limit of removing money";
 cin>>e;
-cout<<"enter amount to withdraw";
-cin>>with;
 f=amount-with;
 if(f<e)
 cout<<"you cannot withdraw";
@@ -80,9 +74,14 @@ b=new current();
 cout<<"enter 1 for deposite and 2 for withdraw";
 cin>>y;
 if(y==1)
-b->deposite();
+{
+  cout<<"enter amount to deposite";
+  cin>>depo;
+  b->deposite();}
 else
-b->process();
+{cout<<"enter amount to withdraw";
+cin>>with;
+ b->process(with);}
 b->display();
 getch();
 }
