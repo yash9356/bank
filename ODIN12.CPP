@@ -61,7 +61,7 @@ amount=f;
 };
 void main()
 {
-int x,y,z;
+int x,y,z,depo,with;
 bank *b;
 clrscr();
 b->input();
